@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent appIntent = new Intent(MainActivity.this, OverviewActivity.class);
+                Intent appIntent = new Intent(MainActivity.this, GeneralActivity.class);
                 appIntent.putExtra("topic", position);
                 startActivity(appIntent);
             }

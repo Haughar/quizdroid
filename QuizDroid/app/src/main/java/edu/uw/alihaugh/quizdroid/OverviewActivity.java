@@ -37,9 +37,8 @@ public class OverviewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(OverviewActivity.this, QuestionActivity.class);
-                intent.putExtra("topic", topicNum);
-                intent.putExtra("correctQ", 0);
-                intent.putExtra("totalQ", 0);
+                intent.putExtra("topic", topics[topicNum]);
+                intent.putExtra("topicNum", topicNum);
                 startActivity(intent);
             }
         });
