@@ -11,11 +11,17 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 
 public class QuestionFragment extends Fragment {
     private View view;
     CharSequence userAnswer;
     Button submitBtn;
+    QuizApp app;
+    Topic chosenTopic;
 
     public QuestionFragment() {
         // Required empty public constructor
@@ -29,21 +35,28 @@ public class QuestionFragment extends Fragment {
 
         final int question = getArguments().getInt("question");
         final int correct = getArguments().getInt("correct");
+        final String t = getArguments().getString("topic");
+
+        app = (QuizApp)getActivity().getApplication();
+        HashMap<String, Topic> topicMap = app.getTopicMap();
+        chosenTopic = topicMap.get(t);
+        Question q = chosenTopic.getQuestions().get(question - 1);
 
         TextView questionText = (TextView)view.findViewById(R.id.questionText);
-        questionText.setText("Question text");
+        questionText.setText(q.getQuestionText());
+        String[] choices = q.getChoices().keySet().toArray(new String[q.getChoices().keySet().size()]);
 
         RadioButton radio0 = (RadioButton)view.findViewById(R.id.answer0);
-        radio0.setText("Wrong answer");
+        radio0.setText(choices[0]);
         radio0.setOnClickListener(new QuestionFragment.answerListener(radio0.getText()));
         RadioButton radio1 = (RadioButton)view.findViewById(R.id.answer1);
-        radio1.setText("Wrong answer");
+        radio1.setText(choices[1]);
         radio1.setOnClickListener(new QuestionFragment.answerListener(radio1.getText()));
         RadioButton radio2 = (RadioButton)view.findViewById(R.id.answer2);
-        radio2.setText("Correct Answer");
+        radio2.setText(choices[2]);
         radio2.setOnClickListener(new QuestionFragment.answerListener(radio2.getText()));
         RadioButton radio3 = (RadioButton)view.findViewById(R.id.answer3);
-        radio3.setText("Wrong Answer");
+        radio3.setText(choices[3]);
         radio3.setOnClickListener(new QuestionFragment.answerListener(radio3.getText()));
 
         submitBtn = (Button)view.findViewById(R.id.submitBtn);
@@ -54,6 +67,7 @@ public class QuestionFragment extends Fragment {
                 b.putInt("question", question);
                 b.putInt("correct", correct);
                 b.putString("answer", userAnswer.toString());
+                b.putString("topic", t);
 
                 AnswerFragment af = new AnswerFragment();
                 af.setArguments(b);

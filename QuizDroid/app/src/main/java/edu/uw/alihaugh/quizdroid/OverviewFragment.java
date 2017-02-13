@@ -29,6 +29,8 @@ public class OverviewFragment extends Fragment {
         topicTit.setText(getArguments().getString("topic"));
         TextView topicDesc = (TextView)view.findViewById(R.id.topicDescription);
         topicDesc.setText(getArguments().getString("desc"));
+        TextView numQuestions = (TextView)view.findViewById(R.id.numQuestions);
+        numQuestions.setText(Integer.toString(getArguments().getInt("numQuestions")));
 
 
         Button start = (Button)view.findViewById(R.id.startButton);
@@ -38,6 +40,7 @@ public class OverviewFragment extends Fragment {
                 Bundle b = new Bundle();
                 b.putInt("question", 1);
                 b.putInt("correct", 0);
+                b.putString("topic", getArguments().getString("topic"));
                 QuestionFragment qf = new QuestionFragment();
                 qf.setArguments(b);
                 FragmentTransaction tx = getFragmentManager().beginTransaction();
