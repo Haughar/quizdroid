@@ -64,6 +64,7 @@ public class QuizApp extends Application implements TopicRepository{
                 JSONObject obj = (JSONObject) info.get(i);
                 String title = obj.getString("title");
                 String desc = obj.getString("description");
+                String image = obj.getString("image");
                 JSONArray questions = obj.getJSONArray("questions");
 
                 ArrayList<Question> qs = new ArrayList<Question>();
@@ -78,7 +79,7 @@ public class QuizApp extends Application implements TopicRepository{
                     }
                     qs.add(new Question(text, choicesList, cAnswer));
                 }
-                Topic t = new Topic(title, desc, qs);
+                Topic t = new Topic(title, desc,image, qs);
                 topicMap.put(title, t);
             }
         } catch (JSONException e) {

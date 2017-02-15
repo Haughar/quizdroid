@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         final String[] ts = topics.toArray(new String[topics.size()]);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, ts);
+                R.layout.topiclist, R.id.Itemname, ts);
         ListView listview = (ListView)findViewById(R.id.listview);
         listview.setAdapter(adapter);
 
@@ -41,5 +43,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(appIntent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent appIntent = new Intent(MainActivity.this, PreferencesActivity.class);
+            startActivity(appIntent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

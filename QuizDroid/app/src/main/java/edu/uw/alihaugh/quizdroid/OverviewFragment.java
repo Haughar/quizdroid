@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -27,6 +28,8 @@ public class OverviewFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_overview, container, false);
         TextView topicTit = (TextView)view.findViewById(R.id.topicTitle);
         topicTit.setText(getArguments().getString("topic"));
+        ImageView image = (ImageView) view.findViewById(R.id.topicImage);
+        //image.setImageDrawable();
         TextView topicDesc = (TextView)view.findViewById(R.id.topicDescription);
         topicDesc.setText(getArguments().getString("desc"));
         TextView numQuestions = (TextView)view.findViewById(R.id.numQuestions);

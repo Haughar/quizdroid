@@ -30,6 +30,7 @@ public class GeneralActivity extends Activity {
 
         Bundle b = new Bundle();
         b.putString("topic", chosenTopic.getTitle());
+        b.putString("image", chosenTopic.getImage());
         b.putString("desc", chosenTopic.getDescription());
         b.putInt("numQuestions", chosenTopic.getQuestions().size());
 

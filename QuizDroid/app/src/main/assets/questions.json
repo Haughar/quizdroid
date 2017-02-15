@@ -1,6 +1,7 @@
 [
   {
     "title": "Math",
+    "image": "@mipmap/ic_launcher",
     "description": "Testing to see if you have basic understanding of math.",
     "questions": [
       {
@@ -17,6 +18,7 @@
   },
   {
     "title": "Physics",
+    "image": "@mipmap/ic_launcher",
     "description": "See if you understand the way the world works.",
     "questions": [
       {
@@ -28,6 +30,7 @@
   },
   {
     "title": "Marvel Super Heroes",
+    "image": "@mipmap/ic_launcher",
     "description": "Tests how well you really know the Marvel super heroes",
     "questions": [
       {

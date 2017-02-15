@@ -7,12 +7,13 @@ import java.util.ArrayList;
  */
 
 public class Topic {
-    private String title, description;
+    private String title, description, image;
     private ArrayList<Question> questions;
 
-    public Topic (String t, String d, ArrayList<Question> qs) {
+    public Topic (String t, String d, String i, ArrayList<Question> qs) {
         this.title = t;
         this.description = d;
+        this.image = i;
         this.questions = qs;
     }
 
@@ -23,6 +24,8 @@ public class Topic {
     public String getDescription() {
         return description;
     }
+
+    public String getImage() { return image; }
 
     public ArrayList<Question> getQuestions() {
         return questions;
