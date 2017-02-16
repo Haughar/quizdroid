@@ -1,8 +1,11 @@
 package edu.uw.alihaugh.quizdroid;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.SystemClock;
 import android.preference.PreferenceActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +27,7 @@ public class PreferencesActivity extends AppCompatActivity {
         SharedPreferences.Editor pe = sp.edit();
         if (sp == null) {
             pe.putString("url", "http://tednewardsandbox.site44.com/questions.json");
-            pe.putInt("updateRate", 10);
+            pe.putInt("updateRate", 100);
             pe.commit();
         }
 
@@ -41,6 +44,16 @@ public class PreferencesActivity extends AppCompatActivity {
                 pe.putString("url", url.getText().toString());
                 pe.putInt("updateRate", Integer.parseInt(update.getText().toString()));
                 pe.commit();
+
+                Intent intent = new Intent(PreferencesActivity.this, UpdateReceiver.class);
+                PendingIntent pi = PendingIntent.getBroadcast(PreferencesActivity.this, 0, intent, 0);
+                AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                stopService(intent);
+                alarm.cancel(pi);
+
+                PendingIntent alarmIntent = PendingIntent.getBroadcast(PreferencesActivity.this, 0, intent, 0);
+                alarm.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(), Integer.parseInt(update.getText().toString()), alarmIntent);
+
                 Intent appIntent = new Intent(PreferencesActivity.this, MainActivity.class);
                 startActivity(appIntent);
             }

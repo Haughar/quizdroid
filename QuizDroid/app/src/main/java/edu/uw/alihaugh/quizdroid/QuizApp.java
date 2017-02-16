@@ -1,6 +1,9 @@
 package edu.uw.alihaugh.quizdroid;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -39,6 +42,10 @@ public class QuizApp extends Application implements TopicRepository{
         try {
             InputStream is = getAssets().open("questions.json");
             json = readFile(is);
+            // SharedPreferences sp = getSharedPreferences("quizAppPref", Context.MODE_PRIVATE);
+            // final AsyncTask<String, String, String> downloadedString = new DownloadFileFromUrl().execute(sp.getString("url", "http://tednewardsandbox.site44.com/questions.json"));
+            // String thing = downloadedString.toString();
+            // JSONObject jObject = new JSONObject(downloadedString.toString());
             JSONArray info = new JSONArray(json);
             processInfo(info);
         } catch (IOException e) {
