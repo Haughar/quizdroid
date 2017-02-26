@@ -1,15 +1,14 @@
 package edu.uw.alihaugh.quizdroid;
 
+import android.app.DownloadManager;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
 
 import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.StringWriter;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -18,6 +17,7 @@ import java.net.URLConnection;
  */
 
 public class DownloadFileFromUrl extends AsyncTask<String, String, String> {
+    private DownloadManager downloadManager;
 
     @Override
     protected void onPreExecute() {
@@ -28,6 +28,7 @@ public class DownloadFileFromUrl extends AsyncTask<String, String, String> {
     protected String doInBackground(String... f_url) {
         int count;
         try {
+
             URL url = new URL(f_url[0]);
             URLConnection conection = url.openConnection();
             conection.connect();

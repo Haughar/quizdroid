@@ -2,7 +2,7 @@
   {
     "title": "Math",
     "image": "@mipmap/ic_launcher",
-    "description": "Testing to see if you have basic understanding of math.",
+    "desc": "Testing to see if you have basic understanding of math.",
     "questions": [
       {
         "text": "2 + 3 =",
@@ -19,7 +19,7 @@
   {
     "title": "Physics",
     "image": "@mipmap/ic_launcher",
-    "description": "See if you understand the way the world works.",
+    "desc": "See if you understand the way the world works.",
     "questions": [
       {
         "text": "What does a Newton help measure?",
@@ -31,7 +31,7 @@
   {
     "title": "Marvel Super Heroes",
     "image": "@mipmap/ic_launcher",
-    "description": "Tests how well you really know the Marvel super heroes",
+    "desc": "Tests how well you really know the Marvel super heroes",
     "questions": [
       {
         "text": "How tall is Quicksilver?",
